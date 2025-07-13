@@ -339,10 +339,6 @@ function ChangeGameMode() {
                 $Files.json.patches     += SetJSONFile ($Paths.Patches + "\" + $_.title + "\" + $GameType.mode + "\Patches.json")
             }
         }
-
-        $Files.json.patches = $Files.json.patches | Where-Object {
-            !( ($_.title -eq "The Sealed Palace" -or $_.title -eq "Sands of Time" -or $_.title -eq "Demon's Quest") -and $_.script -ne $null -and $_.code -eq $null)
-        }
     }
     else { $Files.json.patches = $null }
 
@@ -564,20 +560,6 @@ function ChangePatch() {
 
 
 #==============================================================================================================================================================================================
-function ImportModuleWithHash([string]$File) {
-    
-    if ($GamePatch.code -ne $null) {
-        $checksum = (Get-FileHash -LiteralPath $file).Hash
-        if     ($GamePatch.code -ne $checksum)   { CreateErrorDialog -Error "Mismatch" }
-        elseif (TestFile $file)                  { Import-Module -Name $file -Global   }
-    }
-    elseif (TestFile $file) { Import-Module -Name $file -Global }
-
-}
-
-
-
-#==============================================================================================================================================================================================
 function SetGameScript() {
     
     if (IsSet $GamePatch.script) {
@@ -585,20 +567,21 @@ function SetGameScript() {
             foreach ($script in $GamePatch.script) {
                 if (Get-Module -Name $script) { Remove-Module -Name $script }
                 $file = $Paths.Scripts + "\Options\" + $script + ".psm1"
-                if (TestFile $file) { ImportModuleWithHash $File }
+                if (TestFile $file) { Import-Module -Name $file -Global }
                 else {
                     $file = $GameFiles.addonScripts + "\" + $script + ".psm1"
-                    if (TestFile $file) { ImportModuleWithHash $File }
+                    if (TestFile $file) { Import-Module -Name $file -Global }
                 }
             }
         }
         else {
             if (Get-Module -Name $GamePatch.script) { Remove-Module -Name $GamePatch.script }
             $file = $Paths.Scripts + "\Options\" + $GamePatch.script + ".psm1"
-            if (TestFile $file) { ImportModuleWithHash $File }
+            if (TestFile $file) { Import-Module -Name $file -Global }
             else {
                 $file = $GameFiles.addonScripts + "\" + $GamePatch.script + ".psm1"
-                if (TestFile $file) { ImportModuleWithHash $File }
+                if (TestFile $file) { Import-Module -Name $file -Global }
+                write-host $file
             }
         }
         if (HasCommand "CreateOptions") {
