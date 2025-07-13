@@ -1,7 +1,7 @@
 {
-	"uri"				: "https://github.com/Admentus64/Patcher64Plus-Tool/archive/refs/heads/master.zip",
-	"version"			: "https://github.com/Admentus64/Patcher64Plus-Tool/blob/master/Files/version.txt",
-	"versionFallback"		: "https://raw.githubusercontent.com/Admentus64/Patcher64Plus-Tool/master/Files/version.txt",
+	"uri"				: "https://github.com/Anthrogi50/Patcher64Plus-Tool-AnthrogiFork/archive/refs/heads/master.zip",
+	"version"			: "https://github.com/Anthrogi50/Patcher64Plus-Tool-AnthrogiFork/blob/master/Files/version.txt",
+	"versionFallback"		: "https://raw.githubusercontent.com/Anthrogi50/Patcher64Plus-Tool-AnthrogiFork/master/Files/version.txt",
 	"addons" : [ {
 		"title"			: "Maria's OOT-MM-Models",
 		"type"			: "Models",
@@ -29,8 +29,8 @@
 	}, {
 		"title"			: "Expanded ROM Hacks",
 		"type"			: "Patches",
-		"uri"			: "https://github.com/Admentus64/Patcher64Plus-Tool-Patches/archive/refs/heads/main.zip",
-		"version"		: "https://github.com/Admentus64/Patcher64Plus-Tool-Patches/blob/main/version.txt",
-		"versionFallback"	: "https://raw.githubusercontent.com/Admentus64/Patcher64Plus-Tool-Patches/main/version.txt"
+		"uri"			: "https://github.com/Anthrogi50/Patcher64Plus-Tool-Patches-AnthrogiFork/archive/refs/heads/main.zip",
+		"version"		: "https://github.com/Anthrogi50/Patcher64Plus-Tool-Patches-AnthrogiFork/blob/main/version.txt",
+		"versionFallback"	: "https://raw.githubusercontent.com/Anthrogi50/Patcher64Plus-Tool-Patches-AnthrogiFork/main/version.txt"
 	} ]
 }
